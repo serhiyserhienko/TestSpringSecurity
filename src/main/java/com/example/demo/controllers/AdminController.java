@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user")
-public class HelloController {
+@RequestMapping("/admin")
+public class AdminController {
 
     @Autowired
     private HelloService helloService;
 
     @GetMapping("/get")
     public ResponseEntity<?> get() {
-        return new ResponseEntity<>(helloService.getMessage(), HttpStatus.OK);
+        return new ResponseEntity<>(helloService.getSecretMessage(), HttpStatus.OK);
     }
 }
