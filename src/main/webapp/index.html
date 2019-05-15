@@ -13,5 +13,9 @@
     <form action="http://localhost:8083/user/get">
         <input type="submit" value="Go user" />
     </form>
+    <form class="logout" action="/logout" method="post">
+        <!--<input type="hidden" name="{{{_csrf.parameterName}}}" value="{{{_csrf.token}}}">-->
+        <button>Log Out</button>
+    </form>
 </body>
 </html>
