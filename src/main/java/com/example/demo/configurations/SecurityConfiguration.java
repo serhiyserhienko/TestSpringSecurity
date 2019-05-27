@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
-@EnableWebSecurity//   (debug = true)
+@EnableWebSecurity //(debug = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
