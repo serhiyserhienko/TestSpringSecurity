@@ -10,7 +10,6 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestControllerAdvice
@@ -19,12 +18,12 @@ public class ExceptionHandlerController {
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
-    public void handleInternalServerError(Throwable e, HttpServletResponse response) throws IOException {
+    public String handleInternalServerError(Throwable e) {
         logger.error("Exception: " + e.getMessage());
         RequestAttributes requestAttributes = RequestContextHolder
                 .currentRequestAttributes();
         ServletRequestAttributes attributes = (ServletRequestAttributes) requestAttributes;
         attributes.getRequest().getSession().invalidate();
-        response.sendRedirect("/login");
+        return "redirect:/login";
     }
 }
