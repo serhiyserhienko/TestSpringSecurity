@@ -31,6 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .inMemoryAuthentication()
                 .withUser("a").password("a").roles("ADMIN").and()
                 .withUser("u").password("u").roles("USER").and()
+                .withUser("g").password("g").roles("GUEST").and()
                 .passwordEncoder(new PasswordEncoder() {
                     @Override
                     public String encode(CharSequence rawPassword) {
@@ -52,7 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/admin/**").hasRole("ADMIN")
                     .antMatchers("/").permitAll()
-                    .anyRequest().authenticated()
+                    .anyRequest().permitAll()
                     .and()
                 .formLogin()
                     .permitAll()
